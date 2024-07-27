@@ -1,5 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
+*{
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+
+.cl-internal-uumn80{
+  scale: 2.5;
+}
+
+.cl-internal-1p733cp{
+  background: rgba(205, 240, 225, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 0;
+  border-radius: 0;
+  box-shadow: none ;
+}
+
+.cl-internal-1tpvhd8{
+  font-size: 1.5rem;
+}
+
+.cl-internal-1vbkfwh{
+  display: none;
+}
+
+.cl-internal-ovdovs{
+  display: none;
+}
+
+.cl-internal-ttumny{
+  font-weight: 700;
+}
+
+.cl-internal-180wb59{
+  display: none;
+}
+
+.cl-internal-4x6jej{
+  background: rgba(165, 240, 220, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+.cl-internal-kyvqj0{
+  color:#4D4D4D
+}
+
+.cl-internal-1v2koqu{
+  font-weight: 700;
+}
+
+.bg-signin {
+  background-image: url("/soultouch-signinbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
