@@ -2,7 +2,8 @@ import {
   SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
+  UserButton,
+  
 } from '@clerk/nextjs'
 
 export default function Home() {
