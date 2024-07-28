@@ -5,6 +5,9 @@ import {
   UserButton,
   
 } from '@clerk/nextjs'
+import { connectMongoDB } from './config/dbconfig';
+
+connectMongoDB();
 
 export default function Home() {
   return (
