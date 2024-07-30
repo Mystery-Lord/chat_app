@@ -65,7 +65,7 @@ body {
   font-weight: 700;
 }
 
-.bg-signin {
+.bg-auth {
   background-image: url("/soultouch-signinbg.png");
   background-size: cover;
   background-position: center;

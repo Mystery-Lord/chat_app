@@ -9,7 +9,6 @@ const schema = new mongoose.Schema(
     },
     formalName: {
       type: String,
-
     },
     username: {
       type: String,
@@ -18,10 +17,9 @@ const schema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
       unique: true
     },
-    profilePicture: {
+    avartar: {
       type: String,
       required: false
     },
