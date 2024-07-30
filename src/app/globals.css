@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Comfortaa:wght@300..700&family=Playwrite+IS:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -70,4 +71,9 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.header-logo {
+  font-family: "Acme", sans-serif;
+  font-weight: 400;
 }
