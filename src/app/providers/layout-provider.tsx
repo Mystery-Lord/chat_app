@@ -7,10 +7,10 @@ export default function LayoutProvider({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>
-    <Header/>
-    <MainSection>
-      {children}
-    </MainSection>
-    </div>;
+  return (
+    <div>
+      <Header />
+      <MainSection>{children}</MainSection>
+    </div>
+  );
 }

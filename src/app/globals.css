@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Edu+AU+VIC+WA+NT+Hand:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Comfortaa:wght@300..700&family=Playwrite+IS:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Edu+AU+VIC+WA+NT+Hand:wght@500&family=Shadows+Into+Light&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +15,7 @@ body {
 
 *{
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  
 }
 
 .cl-internal-uumn80{
@@ -29,6 +29,7 @@ body {
   border-bottom: 0;
   border-radius: 0;
   box-shadow: none ;
+  font-family: "Raleway", sans-serif;
 }
 
 .cl-internal-1tpvhd8{
@@ -55,6 +56,8 @@ body {
   background: rgba(165, 240, 220, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  font-family: "Raleway", sans-serif;
+  
 }
 
 
@@ -73,7 +76,3 @@ body {
   background-repeat: no-repeat;
 }
 
-.header-logo {
-  font-family: "Acme", sans-serif;
-  font-weight: 400;
-}

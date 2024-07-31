@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#280166'
+      },
+      fontFamily: {
+        Heading: ["Shadows Into Light", "cursive"]
       }
     },
   },
