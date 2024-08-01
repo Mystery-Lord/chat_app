@@ -12,7 +12,7 @@ const config: Config = {
         primary: '#280166'
       },
       fontFamily: {
-        Heading: ["Shadows Into Light", "cursive"]
+        Heading: ["Patrick Hand SC", "cursive"]
       }
     },
   },
