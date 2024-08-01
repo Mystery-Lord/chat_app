@@ -9,6 +9,7 @@ import { UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 // import { currentUser } from "@clerk/nextjs/server";
 import { GetCurrentUserFromMongoDB } from "@/app/server-actions/user";
+import UserInfo from "./userInfo";
 
 interface User {
   username: string;
@@ -67,25 +68,55 @@ export default function Header() {
         {currentUser ? (
           <>
             <span>Welcome, {currentUser.username}</span>
-            <motion.button
-              className=" bg-transparent border-none rounded-full cursor-pointer p-0"
-              onClick={() => setDisplayUserinfo(!displayUserInfo)
-              whileTa
-              }
+            <motion.div
+              initial={false}
+              animate={displayUserInfo ? "open" : "closed"}
+              className="relative"
             >
-              <Avatar
-                {...stringAvatar(currentUser.formalName)}
-                sx={{
-                  width: 27,
-                  height: 27,
-                  padding: 2,
-                  bgcolor: randomColor,
-                  color: "black",
-                  fontWeight: "600",
+              <button
+                className="bg-transparent border-none rounded-full cursor-pointer p-0"
+                onClick={() => setDisplayUserinfo(!displayUserInfo)}
+              >
+                <Avatar
+                  {...stringAvatar(currentUser.formalName)}
+                  sx={{
+                    width: 27,
+                    height: 27,
+                    padding: 2,
+                    bgcolor: randomColor,
+                    color: "black",
+                    fontWeight: "600",
+                  }}
+                  alt="avatar"
+                />
+              </button>
+              <motion.div
+                className="absolute top-[3.5rem] right-0 bg-white shadow-lg rounded-lg"
+                variants={{
+                  open: {
+                    clipPath: "inset(0% 0% 0% 0% round 10px)",
+                    transition: {
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.7,
+                      delayChildren: 0.3,
+                      staggerChildren: 0.05,
+                    },
+                  },
+                  closed: {
+                    clipPath: "inset(10% 50% 90% 50% round 10px)",
+                    transition: {
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.3,
+                    },
+                  },
                 }}
-                alt="avatar"
-              />
-            </motion.button>
+                style={{ pointerEvents: displayUserInfo ? "auto" : "none" }}
+              >
+                <UserInfo />
+              </motion.div>
+            </motion.div>
           </>
         ) : (
           <div>{error && <p className=" text-red-600">Error: {error}</p>}</div>
