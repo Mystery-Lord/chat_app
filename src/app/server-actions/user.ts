@@ -19,7 +19,7 @@ export const GetCurrentUserFromMongoDB = async() => {
       return JSON.parse(JSON.stringify(mongoUser))
     }
 
-    const formalName = `${clerkUser.firstName} ${clerkUser.lastName}`;
+    const formalName = `${clerkUser.firstName?.toUpperCase} ${clerkUser.lastName?.toUpperCase}`;
     const username = clerkUser.username || formalName;
 
     const newUserProps = {

@@ -2,10 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { Avatar } from "@mui/material";
 import { UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { currentUser } from "@clerk/nextjs/server";
+// import { currentUser } from "@clerk/nextjs/server";
 import { GetCurrentUserFromMongoDB } from "@/app/server-actions/user";
 
 interface User {
@@ -30,8 +32,6 @@ function randomColor() {
 }
 
 function stringAvatar(name: string) {
-  
-  
   return {
     children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };
@@ -40,6 +40,7 @@ function stringAvatar(name: string) {
 export default function Header() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [error, setError] = useState(null);
+  const [displayUserInfo, setDisplayUserinfo] = useState(false);
 
   const fetchCurrentUser = async () => {
     try {
@@ -66,11 +67,25 @@ export default function Header() {
         {currentUser ? (
           <>
             <span>Welcome, {currentUser.username}</span>
-            <Avatar
-              {...stringAvatar(currentUser.formalName)}
-              sx={{ width: 27, height: 27, padding: 2, bgcolor: randomColor, color: 'black', fontWeight: '600' }}
-              alt="avatar"
-            />
+            <motion.button
+              className=" bg-transparent border-none rounded-full cursor-pointer p-0"
+              onClick={() => setDisplayUserinfo(!displayUserInfo)
+              whileTa
+              }
+            >
+              <Avatar
+                {...stringAvatar(currentUser.formalName)}
+                sx={{
+                  width: 27,
+                  height: 27,
+                  padding: 2,
+                  bgcolor: randomColor,
+                  color: "black",
+                  fontWeight: "600",
+                }}
+                alt="avatar"
+              />
+            </motion.button>
           </>
         ) : (
           <div>{error && <p className=" text-red-600">Error: {error}</p>}</div>
