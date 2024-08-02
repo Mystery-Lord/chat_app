@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Edu+AU+VIC+WA+NT+Hand:wght@500&family=Handlee&family=Patrick+Hand+SC&family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Comfortaa:wght@300..700&family=Playwrite+IS:wght@300&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Edu+AU+VIC+WA+NT+Hand:wght@500&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Edu+AU+VIC+WA+NT+Hand:wght@500&family=Handlee&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Patrick+Hand+SC&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Shadows+Into+Light&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +16,6 @@ body {
 
 *{
   box-sizing: border-box;
-  
 }
 
 .cl-internal-uumn80{

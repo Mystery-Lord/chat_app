@@ -4,12 +4,17 @@ import React, { useState, useEffect } from "react";
 import { Avatar } from "@mui/material";
 import { UserTypes } from "@/app/interfaces/user";
 import { GetCurrentUserFromMongoDB } from "@/app/server-actions/user";
+import Logout from "./logout";
 import {
   randomColor,
   stringAvatar,
   formatDate,
 } from "../../utilities/userInfoStyle";
 import { motion } from "framer-motion";
+
+import { MdDriveFileRenameOutline } from "react-icons/md";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { BsCalendarDate } from "react-icons/bs";
 
 export default function UserInfo() {
   const [currentUser, setCurrentUser] = useState<UserTypes | null>(null);
@@ -50,18 +55,18 @@ export default function UserInfo() {
               <Avatar
                 {...stringAvatar(currentUser.formalName)}
                 sx={{
-                  width: 27,
-                  height: 27,
-                  padding: 2,
+                  width: 30,
+                  height: 30,
                   bgcolor: avatarBgColor,
                   color: "black",
                   fontWeight: "600",
+                  fontSize: 15,
                 }}
                 alt="avatar"
               />
             </button>
             <motion.div
-              className="absolute top-[3.4rem] right-[-2.5rem] w-64 bg-[#04A377] bg-opacity-30 border-b-2 shadow-inner px-4 pb-2 z-10"
+              className="absolute top-[3.3rem] right-[-2.5rem] w-[20rem] bg-[#e1e1e1] bg-opacity-70 border-2 shadow-inner px-4 pb-4 z-10"
               variants={{
                 open: {
                   y: 0,
@@ -87,33 +92,43 @@ export default function UserInfo() {
               style={{ pointerEvents: displayUserInfo ? "auto" : "none" }}
             >
               <div className="flex flex-col justify-center items-center ">
-                <h2 className="text-2xl font-bold mb-2">Profile</h2>
+                <p className="text-2xl font-bold">Profile</p>
                 <Avatar
                   {...stringAvatar(currentUser.formalName)}
                   sx={{
-                    width: 70,
-                    height: 70,
+                    width: 50,
+                    height: 50,
                     bgcolor: avatarBgColor,
                     color: "black",
-                    fontSize: 40,
+                    fontSize: 25,
                     fontWeight: "600",
                   }}
                   alt="avatar"
                 />
-                <div className="flex flex-col justify-center items-start w-full gap-y-1">
-                  <div className="flex justify-between w-full border-b-2">
-                    <p><strong>Name:</strong></p>
+                <div className="flex flex-col justify-center items-start w-full gap-y-2 mt-6">
+                  <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg">
+                    <p className=" flex items-center gap-x-1">
+                      <MdDriveFileRenameOutline size={20}/>
+                      <strong>Name:</strong>
+                    </p>
                     <p>{currentUser.formalName}</p>
                   </div>
-                  <div className="flex justify-between w-full">
-                    <p><strong>Email:</strong></p>
+                  <div className="flex justify-between w-full tracking-tighter items-center bg-orange-300 px-2 rounded-lg">
+                    <p className=" flex items-center gap-x-1">
+                      <MdOutlineMailOutline size={20}/>
+                      <strong>Email:</strong>
+                    </p>
                     <p>{currentUser.email}</p>
                   </div>
-                  <div className="flex justify-between w-full">
-                    <p><strong>Joined On:</strong></p>
+                  <div className="flex justify-between w-full tracking-tighter items-center bg-purple-300 px-2 rounded-lg">
+                    <p className=" flex items-center gap-x-1">
+                      <BsCalendarDate size={20}/>
+                      <strong>Joined On:</strong>
+                    </p>
                     <p>{formatDate(currentUser.createdAt)}</p>
                   </div>
                 </div>
+                <Logout/>
               </div>
             </motion.div>
           </motion.div>

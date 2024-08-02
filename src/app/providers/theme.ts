@@ -10,7 +10,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Dosis, sans-serif",
+    fontFamily: "Merriweather, serif",
   },
   components: {
     MuiCssBaseline: {
