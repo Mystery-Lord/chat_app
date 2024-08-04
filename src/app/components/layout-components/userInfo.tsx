@@ -55,8 +55,8 @@ export default function UserInfo() {
               <Avatar
                 {...stringAvatar(currentUser.formalName)}
                 sx={{
-                  width: 30,
-                  height: 30,
+                  width: 35,
+                  height: 35,
                   bgcolor: avatarBgColor,
                   color: "black",
                   fontWeight: "600",
@@ -66,7 +66,7 @@ export default function UserInfo() {
               />
             </button>
             <motion.div
-              className="absolute top-[3.3rem] right-[-2.5rem] w-[20rem] bg-[#e1e1e1] bg-opacity-70 border-2 shadow-inner px-4 pb-4 z-10"
+              className="absolute top-[3.3rem] right-[-2.5rem] w-[20rem] bg-[#cfe8e4] bg-opacity-70 border-2 shadow-inner px-4 pb-4 z-10"
               variants={{
                 open: {
                   y: 0,
@@ -96,8 +96,8 @@ export default function UserInfo() {
                 <Avatar
                   {...stringAvatar(currentUser.formalName)}
                   sx={{
-                    width: 50,
-                    height: 50,
+                    width: 60,
+                    height: 60,
                     bgcolor: avatarBgColor,
                     color: "black",
                     fontSize: 25,
@@ -128,7 +128,8 @@ export default function UserInfo() {
                     <p>{formatDate(currentUser.createdAt)}</p>
                   </div>
                 </div>
-                <Logout/>
+                
+                <Logout setDisplayUserinfo={setDisplayUserinfo}/>
               </div>
             </motion.div>
           </motion.div>
