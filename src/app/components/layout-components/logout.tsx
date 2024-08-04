@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
 import { useClerk } from "@clerk/nextjs";
 import Router from "next/router";
-import Alert from "@mui/material/Alert";
 import toast, { Toaster } from 'react-hot-toast';
 import { LogoutProps } from "@/app/interfaces/logout";
 
