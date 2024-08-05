@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/layout-components/header";
-import MainSection from "../components/layout-components/mainSection";
+import MainSection from "../components/mainSection";
 
 export default function LayoutProvider({
   children,
