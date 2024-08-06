@@ -2,47 +2,33 @@
 
 import React, { useState, useEffect } from "react";
 import { Avatar } from "@mui/material";
-import { UserTypes } from "@/app/interfaces/user";
-import { GetCurrentUserFromMongoDB } from "@/app/server-actions/user";
+import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { MdDriveFileRenameOutline, MdOutlineMailOutline } from "react-icons/md";
+import { BsCalendarDate } from "react-icons/bs";
 import Logout from "./logout";
 import {
   randomColor,
   stringAvatar,
   formatDate,
 } from "../../utilities/userInfoStyle";
-import { motion } from "framer-motion";
-
-import { MdDriveFileRenameOutline } from "react-icons/md";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { BsCalendarDate } from "react-icons/bs";
 
 export default function UserInfo() {
-  const [currentUser, setCurrentUser] = useState<UserTypes | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { currentUserData } = useSelector((state) => state.user);
   const [displayUserInfo, setDisplayUserinfo] = useState(false);
-  const [avatarBgColor, setAvatarBgColor] = useState<string>("");
-
-  const fetchCurrentUser = async () => {
-    try {
-      const response = await GetCurrentUserFromMongoDB();
-      if (response.error) throw new Error(response.error);
-      setCurrentUser(response);
-      console.log(response);
-      setAvatarBgColor(randomColor());
-    } catch (error: any) {
-      setError(error.message);
-    }
-  };
+  const [avatarBgColor, setAvatarBgColor] = useState("");
 
   useEffect(() => {
-    fetchCurrentUser();
-  }, []);
+    if (currentUserData) {
+      setAvatarBgColor(randomColor());
+    }
+  }, [currentUserData]);
 
   return (
     <div className="flex gap-x-4 items-center justify-between">
-      {currentUser ? (
+      {currentUserData ? (
         <>
-          <span className=" font-bold">Welcome, {currentUser.username}</span>
+          <span className=" font-bold">Welcome, {currentUserData.username}</span>
           <motion.div
             initial={false}
             animate={displayUserInfo ? "open" : "closed"}
@@ -53,7 +39,7 @@ export default function UserInfo() {
               onClick={() => setDisplayUserinfo(!displayUserInfo)}
             >
               <Avatar
-                {...stringAvatar(currentUser.formalName)}
+                {...stringAvatar(currentUserData.formalName)}
                 sx={{
                   width: 35,
                   height: 35,
@@ -94,7 +80,7 @@ export default function UserInfo() {
               <div className="flex flex-col justify-center items-center ">
                 <p className="text-2xl font-bold">Profile</p>
                 <Avatar
-                  {...stringAvatar(currentUser.formalName)}
+                  {...stringAvatar(currentUserData.formalName)}
                   sx={{
                     width: 60,
                     height: 60,
@@ -108,34 +94,34 @@ export default function UserInfo() {
                 <div className="flex flex-col justify-center items-start w-full gap-y-2 mt-6">
                   <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg">
                     <p className=" flex items-center gap-x-1">
-                      <MdDriveFileRenameOutline size={20}/>
+                      <MdDriveFileRenameOutline size={20} />
                       <strong>Name:</strong>
                     </p>
-                    <p>{currentUser.formalName}</p>
+                    <p>{currentUserData.formalName}</p>
                   </div>
                   <div className="flex justify-between w-full tracking-tighter items-center bg-orange-300 px-2 rounded-lg">
                     <p className=" flex items-center gap-x-1">
-                      <MdOutlineMailOutline size={20}/>
+                      <MdOutlineMailOutline size={20} />
                       <strong>Email:</strong>
                     </p>
-                    <p>{currentUser.email}</p>
+                    <p>{currentUserData.email}</p>
                   </div>
                   <div className="flex justify-between w-full tracking-tighter items-center bg-purple-300 px-2 rounded-lg">
                     <p className=" flex items-center gap-x-1">
-                      <BsCalendarDate size={20}/>
+                      <BsCalendarDate size={20} />
                       <strong>Joined On:</strong>
                     </p>
-                    <p>{formatDate(currentUser.createdAt)}</p>
+                    <p>{formatDate(currentUserData.createdAt)}</p>
                   </div>
                 </div>
-                
-                <Logout setDisplayUserinfo={setDisplayUserinfo}/>
+
+                <Logout setDisplayUserinfo={setDisplayUserinfo} />
               </div>
             </motion.div>
           </motion.div>
         </>
       ) : (
-        <div>{error && <p className="text-red-600">Error: {error}</p>}</div>
+        <div>No user data available</div>
       )}
     </div>
   );

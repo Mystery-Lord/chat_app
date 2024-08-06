@@ -19,6 +19,7 @@ export default function Header() {
         <Image src="/soultouch-logo.png" width="60" height="43" alt="logo" />
         <h1>SoulTouch</h1>
       </div>
+      
       <UserInfo/>
     </div>
   );

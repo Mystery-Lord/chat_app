@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import theme from './theme';
+import theme from '../utilities/theme';
 
 export default function ThemeProviderComponent({children}: {children: React.ReactNode}) {
   return (
