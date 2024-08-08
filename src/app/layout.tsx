@@ -6,6 +6,7 @@ import ThemeProvider from "./providers/theme-provider";
 import LayoutProvider from "./providers/layout-provider";
 import ReduxProvider from "./providers/redux-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import FetchUser from "./utilities/fetchUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <body>
           <ThemeProvider>
             <ReduxProvider>
+              <FetchUser/>
               <LayoutProvider>{children}</LayoutProvider>
             </ReduxProvider>
           </ThemeProvider>

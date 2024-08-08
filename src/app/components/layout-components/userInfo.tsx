@@ -12,9 +12,10 @@ import {
   stringAvatar,
   formatDate,
 } from "../../utilities/userInfoStyle";
+import { RootState } from "@/app/redux/store";
 
 export default function UserInfo() {
-  const { currentUserData } = useSelector((state) => state.user);
+  const { currentUserData } = useSelector((state: RootState) => state.user);
   const [displayUserInfo, setDisplayUserinfo] = useState(false);
   const [avatarBgColor, setAvatarBgColor] = useState("");
 

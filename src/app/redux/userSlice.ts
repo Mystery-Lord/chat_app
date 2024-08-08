@@ -1,16 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserTypes } from "../interfaces/user";
+import { User } from "@clerk/nextjs/server";
+
+export interface ReduxUserTypes {
+  currentUserData: UserTypes | null;
+  currentUserId: string;
+}
+
+const initialState: ReduxUserTypes = {
+  currentUserData: null,
+  currentUserId: "",
+};
+
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    currentUserData: null,
-    currentUserId: "",
-  },
+  initialState,
   reducers: {
-    SetCurrentUser: (state, action) => {
+    SetCurrentUser: (state, action: PayloadAction<UserTypes>) => {
       state.currentUserData = action.payload;
     },
-    SetCurrentUserId: (state, action) => {
+    SetCurrentUserId: (state, action: PayloadAction<string>) => {
       state.currentUserId = action.payload;
     }
   }
