@@ -20,14 +20,15 @@ const Logout: React.FC<LogoutProps> = ({ setDisplayUserinfo }) => {
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-4 text-[0.8rem]">
       <Button
         variant="outlined"
         onClick={onLogOut}
         sx={{
           ":hover": {
             backgroundColor: "red",
-            boxShadow: "none"
+            boxShadow: "none",
+            fontSize: 10
           },
         }}
       >

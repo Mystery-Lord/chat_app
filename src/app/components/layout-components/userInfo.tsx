@@ -47,13 +47,14 @@ export default function UserInfo() {
                   bgcolor: avatarBgColor,
                   color: "black",
                   fontWeight: "600",
-                  fontSize: 15,
+                  fontSize: 12,
+                  alignItems: "center"
                 }}
                 alt="avatar"
               />
             </button>
             <motion.div
-              className="absolute top-[3.3rem] right-[-2.5rem] w-[20rem] bg-[#cfe8e4] bg-opacity-70 border-2 shadow-inner px-4 pb-4 z-10"
+              className="absolute top-[3.3rem] right-[-2.5rem] w-[18rem] bg-[#cfe8e4] bg-opacity-70 border-2 shadow-inner px-4 pb-4 z-10"
               variants={{
                 open: {
                   y: 0,
@@ -79,37 +80,38 @@ export default function UserInfo() {
               style={{ pointerEvents: displayUserInfo ? "auto" : "none" }}
             >
               <div className="flex flex-col justify-center items-center ">
-                <p className="text-2xl font-bold">Profile</p>
+                <p className="text-lg font-bold m-2">Profile</p>
                 <Avatar
                   {...stringAvatar(currentUserData.formalName)}
                   sx={{
-                    width: 60,
-                    height: 60,
+                    width: 45,
+                    height: 45,
                     bgcolor: avatarBgColor,
                     color: "black",
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: "600",
+                    alignItems: "center"
                   }}
                   alt="avatar"
                 />
-                <div className="flex flex-col justify-center items-start w-full gap-y-2 mt-6">
-                  <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg">
-                    <p className=" flex items-center gap-x-1">
-                      <MdDriveFileRenameOutline size={20} />
+                <div className="flex flex-col justify-center items-start w-full gap-y-2 mt-2">
+                  <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg text-[0.8rem]">
+                    <p className=" flex items-center gap-x-2 flex-wrap ">
+                      <MdDriveFileRenameOutline size={15} />
                       <strong>Name:</strong>
                     </p>
                     <p>{currentUserData.formalName}</p>
                   </div>
-                  <div className="flex justify-between w-full tracking-tighter items-center bg-orange-300 px-2 rounded-lg">
-                    <p className=" flex items-center gap-x-1">
-                      <MdOutlineMailOutline size={20} />
+                  <div className="flex justify-between w-full tracking-tighter items-center bg-orange-300 px-2 rounded-lg text-[0.8rem]">
+                    <p className=" flex items-center gap-x-2 flex-wrap">
+                      <MdOutlineMailOutline size={15} />
                       <strong>Email:</strong>
                     </p>
                     <p>{currentUserData.email}</p>
                   </div>
-                  <div className="flex justify-between w-full tracking-tighter items-center bg-purple-300 px-2 rounded-lg">
-                    <p className=" flex items-center gap-x-1">
-                      <BsCalendarDate size={20} />
+                  <div className="flex justify-between w-full tracking-tighter items-center bg-purple-300 px-2 rounded-lg text-[0.8rem]">
+                    <p className=" flex items-center gap-x-2 flex-wrap">
+                      <BsCalendarDate size={15} />
                       <strong>Joined On:</strong>
                     </p>
                     <p>{formatDate(currentUserData.createdAt)}</p>
