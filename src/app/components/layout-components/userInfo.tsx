@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { MdDriveFileRenameOutline, MdOutlineMailOutline } from "react-icons/md";
 import { BsCalendarDate } from "react-icons/bs";
 import Logout from "./logout";
+import AvatarUpdate from "./avatar-update";
 import {
   randomColor,
   stringAvatar,
@@ -54,7 +55,7 @@ export default function UserInfo() {
               />
             </button>
             <motion.div
-              className="absolute top-[3.3rem] right-[-2.5rem] w-[18rem] bg-[#cfe8e4] bg-opacity-70 border-2 shadow-inner px-4 pb-4 z-10"
+              className="absolute top-[3.3rem] right-[-2.5rem] w-[18rem] bg-[#cfe8e4] border-2 shadow-inner px-4 pb-4 z-10"
               variants={{
                 open: {
                   y: 0,
@@ -94,7 +95,8 @@ export default function UserInfo() {
                   }}
                   alt="avatar"
                 />
-                <div className="flex flex-col justify-center items-start w-full gap-y-2 mt-2">
+                <AvatarUpdate/>
+                <div className="flex flex-col justify-center items-start w-full gap-y-2">
                   <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg text-[0.8rem]">
                     <p className=" flex items-center gap-x-2 flex-wrap ">
                       <MdDriveFileRenameOutline size={15} />
