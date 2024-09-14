@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserTypes } from "../interfaces/user";
+import { UserTypes } from "../interfaces/types";
 import { User } from "@clerk/nextjs/server";
 
 export interface ReduxUserTypes {
