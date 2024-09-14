@@ -10,10 +10,6 @@ const chatSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
-    admin: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-    },
     lastMessage: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "messages",
@@ -21,6 +17,10 @@ const chatSchema = new mongoose.Schema(
     isGroupChat: {
       type: Boolean,
       default: false,
+    },
+    admins: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "users",
     },
     groupName: {
       type: String,
