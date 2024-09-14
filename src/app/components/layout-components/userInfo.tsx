@@ -19,10 +19,16 @@ export default function UserInfo() {
   const { currentUserData } = useSelector((state: RootState) => state.user);
   const [displayUserInfo, setDisplayUserinfo] = useState(false);
   const [avatarBgColor, setAvatarBgColor] = useState("");
+  const [avatarURL, setAvatarURL] = useState<string | null>(null);
 
+  const handleAvatarUpdate = (newUrl: string) => {
+    setAvatarURL(newUrl);
+  };
+  
   useEffect(() => {
     if (currentUserData) {
       setAvatarBgColor(randomColor());
+      setAvatarURL(currentUserData.avatar || null);
     }
   }, [currentUserData]);
 
@@ -41,6 +47,7 @@ export default function UserInfo() {
               onClick={() => setDisplayUserinfo(!displayUserInfo)}
             >
               <Avatar
+                src={avatarURL || undefined}
                 {...stringAvatar(currentUserData.formalName)}
                 sx={{
                   width: 35,
@@ -95,7 +102,7 @@ export default function UserInfo() {
                   }}
                   alt="avatar"
                 />
-                <AvatarUpdate/>
+                <AvatarUpdate onAvatarUpdated={handleAvatarUpdate}/>
                 <div className="flex flex-col justify-center items-start w-full gap-y-2">
                   <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg text-[0.8rem]">
                     <p className=" flex items-center gap-x-2 flex-wrap ">
