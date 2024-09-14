@@ -12,7 +12,6 @@ const initialState: ReduxUserTypes = {
   currentUserId: "",
 };
 
-
 const userSlice = createSlice({
   name: 'user',
   initialState,

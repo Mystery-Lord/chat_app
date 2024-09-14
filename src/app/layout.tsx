@@ -26,7 +26,7 @@ export default function RootLayout({
         <body>
           <ThemeProvider>
             <ReduxProvider>
-              <FetchUser/>
+              {/* <FetchUser/> */}
               <LayoutProvider>{children}</LayoutProvider>
             </ReduxProvider>
           </ThemeProvider>

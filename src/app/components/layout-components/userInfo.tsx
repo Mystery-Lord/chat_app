@@ -36,7 +36,7 @@ export default function UserInfo() {
     <div className="flex gap-x-4 items-center justify-between">
       {currentUserData ? (
         <>
-          <span className=" font-bold">Welcome, {currentUserData.username}</span>
+          <span className=" font-bold text-white">Welcome, {currentUserData.username}</span>
           <motion.div
             initial={false}
             animate={displayUserInfo ? "open" : "closed"}
