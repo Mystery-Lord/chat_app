@@ -62,7 +62,7 @@ export default function UserInfo() {
               />
             </button>
             <motion.div
-              className="absolute top-[3.3rem] right-[-2.5rem] w-[18rem] bg-[#cfe8e4] border-2 shadow-inner px-4 pb-4 z-10"
+              className="absolute top-[3.5rem] right-[-2.5rem] w-[18rem] bg-stone-950 bg-opacity-90 text-white border-2 shadow-inner px-4 pb-4 z-10"
               variants={{
                 open: {
                   y: 0,

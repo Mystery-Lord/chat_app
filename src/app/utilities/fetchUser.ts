@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { SetCurrentUser } from "@/app/redux/userSlice";
 import { GetCurrentUserFromMongoDB } from "@/app/server-actions/user";
 
 const FetchUser = () => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
