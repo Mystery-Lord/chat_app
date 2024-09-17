@@ -62,7 +62,7 @@ export default function UserInfo() {
               />
             </button>
             <motion.div
-              className="absolute top-[3.5rem] right-[-2.5rem] w-[18rem] bg-stone-950 bg-opacity-90 text-white border-2 shadow-inner px-4 pb-4 z-10"
+              className="absolute top-[3.5rem] right-[-2.0rem] w-[16rem] bg-stone-950 bg-opacity-90 text-white border-2 shadow-inner px-2 pb-4 z-10"
               variants={{
                 open: {
                   y: 0,
@@ -105,21 +105,21 @@ export default function UserInfo() {
                 <AvatarUpdate onAvatarUpdated={handleAvatarUpdate}/>
                 <div className="flex flex-col justify-center items-start w-full gap-y-2">
                   <div className="flex justify-between w-full tracking-tighter items-center bg-sky-300 px-2 rounded-lg text-[0.8rem]">
-                    <p className=" flex items-center gap-x-2 flex-wrap ">
+                    <p className=" flex items-center gap-x-1 flex-wrap ">
                       <MdDriveFileRenameOutline size={15} />
                       <strong>Name:</strong>
                     </p>
                     <p>{currentUserData.formalName}</p>
                   </div>
                   <div className="flex justify-between w-full tracking-tighter items-center bg-orange-300 px-2 rounded-lg text-[0.8rem]">
-                    <p className=" flex items-center gap-x-2 flex-wrap">
+                    <p className=" flex items-center gap-x-1 flex-wrap">
                       <MdOutlineMailOutline size={15} />
                       <strong>Email:</strong>
                     </p>
                     <p>{currentUserData.email}</p>
                   </div>
                   <div className="flex justify-between w-full tracking-tighter items-center bg-purple-300 px-2 rounded-lg text-[0.8rem]">
-                    <p className=" flex items-center gap-x-2 flex-wrap">
+                    <p className=" flex items-center gap-x-1 flex-wrap">
                       <BsCalendarDate size={15} />
                       <strong>Joined On:</strong>
                     </p>

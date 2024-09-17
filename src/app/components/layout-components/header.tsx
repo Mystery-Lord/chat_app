@@ -22,7 +22,7 @@ export default function Header() {
   //   return null;
   // }
   return (
-    <div className=" flex justify-between items-center bg-stone-950 bg-opacity-90 border-b-8 border-b-slate-200 px-10 shadow-inner">
+    <div className=" flex justify-between items-center bg-stone-950 bg-opacity-90 border-b-8 border-b-slate-200 px-8 shadow-inner">
       <Link href="/" className=" no-underline">
         <div className=" flex justify-between items-center gap-x-1 font-Heading text-[0.85rem] uppercase text-white">
           <Image
