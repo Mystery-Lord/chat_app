@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ChatsList() {
   return (
-    <div>
+    <div className='p-2'>
       ChatsList
     </div>
   )
