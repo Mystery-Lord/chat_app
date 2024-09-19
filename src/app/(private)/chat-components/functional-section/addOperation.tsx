@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -6,14 +6,40 @@ import { IoMdAddCircle } from "react-icons/io";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { BiSolidGroup } from "react-icons/bi";
 import { Modal, Fade, Box, Typography, Backdrop } from "@mui/material";
+import { GetAllUsers } from "@/app/server-actions/user";
 
 export default function AddOperation() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isClicked, setIsClicked] = useState(false);
   const [openAddContactsModal, setOpenAddContactsModal] = useState(false);
   const [openGroupModal, setOpenGroupModal] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const open = Boolean(anchorEl);
 
+  useEffect(() => {
+    if (openAddContactsModal) {
+      const fetchUsers = async () => {
+        setLoading(true);
+        try {
+          const response = await GetAllUsers();
+          if (response.error) {
+            throw new Error("No users found");
+          }
+          //console.log(response);
+          setUsers(response);
+        } catch (error: any) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchUsers();
+    }
+  }, [openAddContactsModal]);
+  
+  
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
     setIsClicked(true);
@@ -137,6 +163,7 @@ export default function AddOperation() {
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Please fill in the contact details.
             </Typography>
+            {loading && <div className=""></div>}
           </Box>
         </Fade>
       </Modal>
