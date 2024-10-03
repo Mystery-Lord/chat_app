@@ -24,11 +24,11 @@ export default function Header() {
   return (
     <div className=" flex justify-between items-center bg-stone-950 bg-opacity-90 border-b-8 border-b-slate-200 px-8 shadow-inner">
       <Link href="/" className=" no-underline">
-        <div className=" flex justify-between items-center gap-x-1 font-Heading text-[0.85rem] uppercase text-white">
+        <div className=" flex justify-between items-center gap-x-4 font-mainFont text-[1.0rem] uppercase text-white">
           <Image
             src="/soultouch-logo.svg"
-            width="45"
-            height="45"
+            width="50"
+            height="50"
             alt="logo"
             color="white"
           />

@@ -12,7 +12,7 @@ const config: Config = {
         primary: '#280166'
       },
       fontFamily: {
-        Heading: ["Patrick Hand SC", "cursive"]
+        mainFont: ["Gluten", "cursive"]
       }
     },
   },

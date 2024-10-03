@@ -15,7 +15,7 @@ const Search = styled('div')(({ theme }) => ({
   marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
+    //marginLeft: theme.spacing(1),
     width: 'auto',
   },
 }));
@@ -38,9 +38,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+      width: '10ch',
       '&:focus': {
-        width: '20ch',
+        width: '25ch',
       },
     },
   },
@@ -53,8 +53,7 @@ export default function SearchBar() {
         sx={{ 
           justifyContent: 'flex-start', 
           backgroundColor: 'transparent', 
-          paddingLeft: '0 !important',  
-          paddingRight: '0 !important', 
+          padding: '0 !important',  
           minHeight: 'auto'              
         }}
       >
@@ -65,6 +64,9 @@ export default function SearchBar() {
           <StyledInputBase
             placeholder="search..."
             inputProps={{ 'aria-label': 'search' }}
+            sx={{
+              fontWeight: "300"
+            }}
           />
         </Search>
       </Toolbar>
