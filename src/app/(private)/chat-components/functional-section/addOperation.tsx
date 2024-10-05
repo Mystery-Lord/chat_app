@@ -1,27 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import toast, { Toaster } from "react-hot-toast";
+
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { CircularProgress } from "@mui/material";
+import { Modal, Fade, Box, Typography, Backdrop } from "@mui/material";
+
+import { GetAllUsers } from "@/app/server-actions/user";
+import { UserTypes } from "@/app/interfaces/types";
+import SearchBar from "./searchbar";
+import { CreateNewChat } from "@/app/server-actions/chats";
+//import { currentUser } from "@clerk/nextjs/server";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
+
 import { IoMdAddCircle } from "react-icons/io";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { ImProfile } from "react-icons/im";
 import { BiSolidGroup } from "react-icons/bi";
-import { Modal, Fade, Box, Typography, Backdrop } from "@mui/material";
-import { GetAllUsers } from "@/app/server-actions/user";
-import { UserTypes } from "@/app/interfaces/types";
-import SearchBar from "./searchbar";
 
 export default function AddOperation() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
   const [isClicked, setIsClicked] = useState(false);
   const [openAddContactsModal, setOpenAddContactsModal] = useState(false);
   const [openGroupModal, setOpenGroupModal] = useState(false);
-  const [users, setUsers] = useState<UserTypes[]>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const open = Boolean(anchorEl);
+
+  const [users, setUsers] = useState<UserTypes[]>();
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const { currentUserData } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     if (openAddContactsModal) {
@@ -70,6 +81,26 @@ export default function AddOperation() {
 
   const handleCloseGroupModal = () => {
     setOpenGroupModal(false);
+  };
+
+  const onAddToChat = async (userId: string) => {
+    try {
+      setSelectedUserId(userId);
+      setLoading(true);
+      const response = await CreateNewChat({
+        users: [userId, currentUserData?._id],
+        createdBy: currentUserData?._id,
+        isGroupChat: false,
+      });
+      if (response.error) throw new Error(response.error.message);
+      toast.success("You have a new friend now!");
+      setOpenAddContactsModal(false);
+    } catch (error: any) {
+      console.log(error.message);
+      toast.error("Failed to add the user. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -161,7 +192,7 @@ export default function AddOperation() {
               paddingX: 2,
               paddingY: 4,
               borderRadius: 4,
-              justifyContent: "center"
+              justifyContent: "center",
             }}
           >
             <Typography
@@ -171,13 +202,13 @@ export default function AddOperation() {
               sx={{
                 textAlign: "center",
                 fontSize: 24,
-                fontWeight: 300
+                fontWeight: 300,
               }}
             >
               Add Contacts
             </Typography>
-            <SearchBar/>
-            {loading && (
+            <SearchBar />
+            {loading && !selectedUserId && (
               <div className="flex justify-center items-center mt-2">
                 <CircularProgress />
               </div>
@@ -194,15 +225,20 @@ export default function AddOperation() {
                     */}
                     <span className=" text-white">{user.username}</span>
                     <div className="flex justify-between items-center gap-x-4">
-                      <button className=" bg-transparent shadow-none border-none hover:cursor-pointer shake-on-hover">
-                        <BsPersonFillAdd color="white" size={20}/>
+                      <button
+                        onClick={() => {
+                          if (selectedUserId !== user._id && loading) return;
+                          onAddToChat(user._id);
+                        }}
+                        //disabled={loading}
+                        className=" bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer  hover:bg-white hover:text-black shake-on-hover"
+                      >
+                        <BsPersonFillAdd size={20} />
                       </button>
-                      <button className=" bg-transparent shadow-none border-none hover:cursor-pointer shake-on-hover">
-                        <ImProfile color="white" size={20}/>
+                      <button className=" bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer hover:bg-white hover:text-black shake-on-hover">
+                        <ImProfile size={20} />
                       </button>
-                      
                     </div>
-                    
                   </div>
                 ))}
               </div>
