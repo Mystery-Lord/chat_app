@@ -93,7 +93,7 @@ export default function AddOperation() {
         isGroupChat: false,
       });
       if (response.error) throw new Error(response.error.message);
-      toast.success("You have a new friend now!");
+      toast.success("Add new chat successfully! ");
       setOpenAddContactsModal(false);
     } catch (error: any) {
       console.log(error.message);
@@ -230,7 +230,7 @@ export default function AddOperation() {
                           if (selectedUserId !== user._id && loading) return;
                           onAddToChat(user._id);
                         }}
-                        //disabled={loading}
+                        disabled={loading}
                         className=" bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer  hover:bg-white hover:text-black shake-on-hover"
                       >
                         <BsPersonFillAdd size={20} />
@@ -286,6 +286,7 @@ export default function AddOperation() {
           </Box>
         </Fade>
       </Modal>
+      <Toaster/>
     </div>
   );
 }

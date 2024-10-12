@@ -32,3 +32,4 @@ export interface MessagesTypes {
   createdAt: string;
   updatedAt: string;
 }
+
