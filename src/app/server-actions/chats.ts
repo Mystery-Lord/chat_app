@@ -15,15 +15,15 @@ export const CreateNewChat = async (payload:any) => {
 
 export const GetAllChats = async (userId: string) => {
   try {
-    const users = chatModel.find({
+    const users = await chatModel.find({
       users: {
         $in : [userId],
       }
-    })
+    });
     return JSON.parse(JSON.stringify(users));
   } catch (error:any) {
     return {
-      error: console.log(error)
+      error: error.message
     }
   }
 }
