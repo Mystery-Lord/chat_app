@@ -33,6 +33,7 @@ export default function AddOperation() {
   const [users, setUsers] = useState<UserTypes[]>();
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const { currentUserData } = useSelector((state: RootState) => state.user);
+  const { chats } = useSelector((state: RootState) => state.chat);
 
   useEffect(() => {
     if (openAddContactsModal) {
@@ -215,32 +216,41 @@ export default function AddOperation() {
             )}
             {!loading && (users?.length ?? 0) > 0 && (
               <div className="flex flex-col gap-y-2 text-[1.0rem] mt-2">
-                {users?.map((user) => (
-                  <div
-                    key={user._id}
-                    className=" flex justify-between items-center bg-black px-4 py-2 rounded-lg shadow-md"
-                  >
-                    {/*
-                      <Image src={user.avatar} alt="avatar" className="w-10 h-10 rounded-full" />
-                    */}
-                    <span className=" text-white">{user.username}</span>
-                    <div className="flex justify-between items-center gap-x-4">
-                      <button
-                        onClick={() => {
-                          if (selectedUserId !== user._id && loading) return;
-                          onAddToChat(user._id);
-                        }}
-                        disabled={loading}
-                        className=" bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer  hover:bg-white hover:text-black shake-on-hover"
-                      >
-                        <BsPersonFillAdd size={20} />
-                      </button>
-                      <button className=" bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer hover:bg-white hover:text-black shake-on-hover">
-                        <ImProfile size={20} />
-                      </button>
+                {users?.map((user) => {
+                  const userExistsInChats = chats.some(
+                    (ch) => ch.createdBy._id === user._id
+                  );
+
+                  if (user._id === currentUserData?._id || userExistsInChats) {
+                    return null;
+                  }
+
+                  return (
+                    <div
+                      key={user._id}
+                      className="flex justify-between items-center bg-black px-4 py-2 rounded-lg shadow-md"
+                    >
+                      {/* Uncomment if you want to show the user's avatar */}
+                      {/* <Image src={user.avatar} alt="avatar" className="w-10 h-10 rounded-full" /> */}
+                      <span className="text-white">{user.username}</span>
+                      <div className="flex justify-between items-center gap-x-4">
+                        <button
+                          onClick={() => {
+                            if (selectedUserId !== user._id && loading) return;
+                            onAddToChat(user._id);
+                          }}
+                          disabled={loading}
+                          className="bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer hover:bg-white hover:text-black shake-on-hover"
+                        >
+                          <BsPersonFillAdd size={20} />
+                        </button>
+                        <button className="bg-transparent shadow-none border-none rounded-lg text-white hover:cursor-pointer hover:bg-white hover:text-black shake-on-hover">
+                          <ImProfile size={20} />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </Box>
@@ -286,7 +296,7 @@ export default function AddOperation() {
           </Box>
         </Fade>
       </Modal>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }

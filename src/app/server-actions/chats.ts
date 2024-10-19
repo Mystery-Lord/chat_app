@@ -19,7 +19,7 @@ export const GetAllChats = async (userId: string) => {
       users: {
         $in : [userId],
       }
-    });
+    }).populate("users");
     return JSON.parse(JSON.stringify(users));
   } catch (error:any) {
     return {
