@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Fade, Box, Typography, Backdrop, CircularProgress } from "@mui/material";
 import AvailableUsers from "./availableUsers";
 import { UserTypes } from "@/app/interfaces/types";
+import SearchBar from "./searchbar";
 
 interface AddContactModalProps {
   open: boolean;
@@ -64,7 +65,7 @@ const AddContactModal: React.FC<AddContactModalProps> = ({
           >
             Add Contacts
           </Typography>
-          {/* Add your SearchBar component here */}
+          <SearchBar/>
           {loading && (
             <div className="flex justify-center items-center mt-2">
               <CircularProgress />
