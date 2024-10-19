@@ -1,6 +1,7 @@
 import React from 'react'
-import SearchBar from '../functional-section/searchbar'
-import AddOperation from '../functional-section/addOperation'
+import SearchBar from '../chats-creation/searchbar'
+//import AddOperation from '../chats-creation/addOperation'
+import ChatsCreation from '../chats-creation/chatsCreation'
 
 
 export default function ChatsListHeader() {
@@ -9,7 +10,8 @@ export default function ChatsListHeader() {
       <h2 className=' p-0 m-0 text-center text-3xl' style={{fontWeight:"300"}}>My Contacts</h2>
       <div className="flex justify-between items-center">
         <SearchBar/>
-        <AddOperation/>
+        <ChatsCreation/>
+        {/*<AddOperation/> old non-refactor component */}
       </div>
     </div>
   )
